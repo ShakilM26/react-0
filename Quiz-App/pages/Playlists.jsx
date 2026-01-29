@@ -1,6 +1,8 @@
 import playlists from '../data/playlists';
+import { useNavigate } from 'react-router-dom';
 
 function Playlists() {
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -10,9 +12,15 @@ function Playlists() {
         style={{border: '1px solid #ccc',
           padding: '10px', marginBottom: '10px'
         }}>
-        </div>
+          <h3>{playlist.title}</h3>
+          <p>{playlist.description}</p>
+          <button onClick={() => navigate(`/quiz/${playlist.id}`)}>
+            Start Quiz
+          </button>
+          </div>
       ))}
     </div>
   );
 }
 
+export default Playlists;
